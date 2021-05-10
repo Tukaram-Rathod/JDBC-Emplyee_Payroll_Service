@@ -60,14 +60,16 @@ public class Java8WatchServiceExample {
                     } catch (IOException x) {
                     }
                 } else if (kind.equals(ENTRY_DELETE)) {
-                    if (Files.isDirectory(child)) dirWatchers.remove(key);
+                    if (Files.isDirectory(child))
+                        dirWatchers.remove(key);
                 }
             }
             //reset key and remove from set if directory no longer accessible
             boolean valid = key.reset();
             if (!valid) {
                 dirWatchers.remove(key);
-                if (dirWatchers.isEmpty()) break; //all directories are inaccessible
+                if (dirWatchers.isEmpty())
+                    break; //all directories are inaccessible
             }
         }
     }
